@@ -25,6 +25,8 @@
   "dependencies": {
     "react-router": "~1.0.1",
     "history": "~1.13.1",
-    "react-bootstrap": "~0.29.3"
+    "react-bootstrap": "~0.29.3",
+    "reactfire": "~0.5.1",
+    "firebase": "~2.3.2"
   }
 }

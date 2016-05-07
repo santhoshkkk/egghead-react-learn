@@ -9,3 +9,7 @@ sudo npm install webpack -g
 webpack -w
 
 install ba
+
+
+npm remove react-dom@15.0.1
+npm install react@15.0.1

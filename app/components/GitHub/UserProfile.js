@@ -7,11 +7,11 @@ var UserProfile = React.createClass({
 	},
 	
 	render: function(){
+		console.log('UserProfile: ' , this.props.bio)
 		return(
 			<div> 
 			<p> USER PROFILE</p>
 			<p> User Name: {this.props.username}</p>
-			<p> Bio: {this.props.bio.name}</p>
 			</div>
 			)
 	}

@@ -5,7 +5,7 @@ var UserProfile = require('./GitHub/UserProfile');
 var Notes = require('./Notes/Notes');
 var ReactFireMixin = require('reactfire');
 var FireBase = require('firebase');
-
+var helpers = require('../utils/helpers');
 
 var Profile = React.createClass({
 
@@ -14,8 +14,8 @@ var Profile = React.createClass({
 	getInitialState: function(){
 		return{
 			notes: [1,2,3],
-			bio: {name:'Sant'},
-			repos: ['a','b']
+			bio: {},
+			repos: []
 		}
 	},
 
@@ -23,6 +23,14 @@ var Profile = React.createClass({
 		this.ref = new FireBase('https://github-note-taker.firebaseio.com/');
 		var childRef = this.ref.child(this.props.params.username);
 		this.bindAsArray(childRef, 'notes');
+
+		helpers.getGithubInfo(this.props.params.username).then(
+			function(data){
+				this.setState({
+					bio: data.bio,
+					repos: data.repos
+				})
+			}.bind(this))
 	},
 
 	componentWillUnMount: function(){

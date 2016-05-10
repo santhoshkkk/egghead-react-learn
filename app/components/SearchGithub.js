@@ -14,7 +14,7 @@ var SearchGithub = React.createClass({
 		var username = this.userNameRef.value;
 		this.userNameRef.value='';
 		console.log(username);
-		this.history.pushState(null, "profile/" + username);
+		this.history.pushState(null, "/profile/" + username);
 	},
 
 	render: function(){

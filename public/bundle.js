@@ -24490,7 +24490,7 @@
 			var username = this.userNameRef.value;
 			this.userNameRef.value = '';
 			console.log(username);
-			this.history.pushState(null, "profile/" + username);
+			this.history.pushState(null, "/profile/" + username);
 		},
 
 		render: function render() {
@@ -24571,11 +24571,15 @@
 		},
 
 		componentDidMount: function componentDidMount() {
+			this.init(this.props.params.username);
+		},
+
+		init: function init(username) {
 			this.ref = new FireBase('https://github-note-taker.firebaseio.com/');
-			var childRef = this.ref.child(this.props.params.username);
+			var childRef = this.ref.child(username);
 			this.bindAsArray(childRef, 'notes');
 
-			helpers.getGithubInfo(this.props.params.username).then(function (data) {
+			helpers.getGithubInfo(username).then(function (data) {
 				this.setState({
 					bio: data.bio,
 					repos: data.repos
@@ -24589,6 +24593,11 @@
 
 		handleAddNote: function handleAddNote(newNote) {
 			this.ref.child(this.props.params.username).child(this.state.notes.length).set(newNote);
+		},
+
+		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+			this.unbind('notes');
+			this.init(nextProps.params.username);
 		},
 
 		render: function render() {
@@ -24634,13 +24643,38 @@
 
 		render: function render() {
 			console.log('REPOS:', this.props.repos);
+			var repos = this.props.repos.map(function (repo, index) {
+				return React.createElement(
+					'li',
+					{ className: 'list-group-item', key: index },
+					repo.html_url && React.createElement(
+						'h4',
+						null,
+						React.createElement(
+							'a',
+							{ href: repo.html_url },
+							repo.name
+						)
+					),
+					repo.description && React.createElement(
+						'p',
+						null,
+						repo.description
+					)
+				);
+			});
 			return React.createElement(
 				'div',
 				null,
 				React.createElement(
-					'p',
+					'h3',
 					null,
-					'REPOS'
+					'User Repos'
+				),
+				React.createElement(
+					'ul',
+					{ className: 'list-group' },
+					repos
 				)
 			);
 		}
@@ -24670,16 +24704,31 @@
 			return React.createElement(
 				'div',
 				null,
-				React.createElement(
-					'p',
-					null,
-					' USER PROFILE'
+				this.props.bio.avatar_url && React.createElement(
+					'li',
+					{ className: 'list-group-item' },
+					React.createElement('img', { src: this.props.bio.avatar_url })
 				),
-				React.createElement(
-					'p',
-					null,
-					' User Name: ',
-					this.props.username
+				this.props.bio.name && React.createElement(
+					'li',
+					{ className: 'list-group-item' },
+					'Name: ',
+					this.props.bio.name,
+					' '
+				),
+				this.props.bio.login && React.createElement(
+					'li',
+					{ className: 'list-group-item' },
+					'UserName: ',
+					this.props.bio.login,
+					' '
+				),
+				this.props.bio.email && React.createElement(
+					'li',
+					{ className: 'list-group-item' },
+					'Email: ',
+					this.props.bio.email,
+					' '
 				)
 			);
 		}

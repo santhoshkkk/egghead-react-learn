@@ -1,10 +1,10 @@
-var React = require('react');
-var Router = require('react-router');
-var Repo = require('./GitHub/Repo');
-var UserProfile = require('./GitHub/UserProfile');
+import React from 'react';
+import Router from 'react-router';
+import Repo from './GitHub/Repo';
+import UserProfile from './GitHub/UserProfile';
 import Notes from './Notes/Notes';
-var ReactFireMixin = require('reactfire');
-var FireBase = require('firebase');
+import ReactFireMixin from 'reactfire';
+import FireBase from 'firebase';
 import getGithubInfo from '../utils/helpers';
 
 var Profile = React.createClass({

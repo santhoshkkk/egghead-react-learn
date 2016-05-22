@@ -1,37 +1,35 @@
-var React = require('react');
-var Router = require('react-router');
+import React from 'react';
+import Router from 'react-router';
 
-
-var SearchGithub = React.createClass({
-
-	mixins: [Router.History],
-
-	getRef: function(ref){
+class SearchGithub extends React.Component{
+	getRef(ref){
 		this.userNameRef=ref;
-	},
+	}
 
-	handleSubmit: function(){
-		var username = this.userNameRef.value;
+	handleSubmit(){
+		const username = this.userNameRef.value;
 		this.userNameRef.value='';
-		console.log(username);
-		this.history.pushState(null, "/profile/" + username);
-	},
+		this.props.history.pushState(null, "/profile/" + username);
+	}
 
-	render: function(){
+	render(){
 		return(
 			<div className="col-sm-12" >
 				<form onSubmit={this.handleSubmit}/>
 				<div className="form-group col-sm-7">
-					<input type="text" ref={this.getRef} className="form-control"/>
+					<input type="text" ref={this.getRef.bind(this)} className="form-control"/>
 
 				</div>
 				<div className="form-group col-sm-5">
-					<button type="submit" className="btn btn-block btn-primary" onClick={this.handleSubmit}> Search Githut </button>
+					<button type="submit" className="btn btn-block btn-primary" onClick={this.handleSubmit.bind(this)}> Search Githut </button>
 				</div>
 			</div>
 		)
 	}
+}
 
-});
+SearchGithub.PropTypes = {
+	history : React.PropTypes.object.isRequired
+}
 
-module.exports = SearchGithub;
+export default SearchGithub;

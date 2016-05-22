@@ -16,3 +16,11 @@ npm install react@15.0.1
 
 
 https://github-note-taker.firebaseio.com
+
+
+react-dom
+reactfire
+react-bootstrap
+
+babel-core           babel-loader         babel-preset-es2015  babel-preset-react
+axios

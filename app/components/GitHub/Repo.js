@@ -1,10 +1,8 @@
 import React from 'react';
 
 
-class Repo extends React.Component {
-	render() {
-		const {repos} = this.props;
-		return(
+const Repo = ({repos}) =>{
+	return(
 		<div>
 			<h3>User Repos</h3>
 			<ul className="list-group">
@@ -19,9 +17,9 @@ class Repo extends React.Component {
 			</ul>
 
 		</div>
-		)
-	}
+	)
 }
+
 Repo.propTypes= {
 	username:React.PropTypes.string.isRequired,
 	repos:React.PropTypes.array.isRequired

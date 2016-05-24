@@ -1,26 +1,14 @@
 sudo apt-get install npm
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 npm init
-npm install react@15.0.1
 ls node_modules/
-npm install react-dom@15.0.1
-npm install --save-dev babel-core@6.3.13 babel-loader@6.2.0 babel-preset-es2015@6.3.13 babel-preset-react@6.3.13
 sudo npm install webpack -g
 webpack -w
 
-install ba
 
-
-npm remove react-dom@15.0.1
-npm install react@15.0.1
+npm remove 
+npm install react-dom react-bootstrap babel-core babel-loader babel-preset-es2015 babel-preset-react axios
+npm install react-router re-base
 
 
 https://github-note-taker.firebaseio.com
-
-
-react-dom
-reactfire
-react-bootstrap
-
-babel-core           babel-loader         babel-preset-es2015  babel-preset-react
-axios

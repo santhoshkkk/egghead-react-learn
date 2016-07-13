@@ -7,8 +7,8 @@ webpack -w
 
 
 npm remove 
-npm install react-dom react-bootstrap babel-core babel-loader babel-preset-es2015 babel-preset-react axios
-npm install react-router re-base
+npm install react-dom react-bootstrap babel-core babel-loader babel-preset-es2015 babel-preset-react axios react-router re-base
+
 
 
 https://github-note-taker.firebaseio.com

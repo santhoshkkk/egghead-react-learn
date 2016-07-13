@@ -1,0 +1,4 @@
+Operational Transformation, at its core, is an optimistic concurrency control mechanism. It allows two editors to modify the same section of a document at the same time without conflict. Or rather, it provides a mechanism for sanely resolving those conflicts so that neither user intervention nor locking become necessary.
+
+
+Operations are allowed at a set of fields. Each field change is an atomic operation

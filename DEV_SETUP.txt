@@ -1,0 +1,6 @@
+sudo apt-get install npm
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+mkdir project
+npm init
+sudo npm install webpack -g
+npm install react-dom react-bootstrap babel-core babel-loader babel-preset-es2015 babel-preset-react axios react-router re-base
